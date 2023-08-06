@@ -7,11 +7,14 @@ from nltk.stem import WordNetLemmatizer # It has the ability to lemmatize.
 import tensorflow as tensorF # A multidimensional array of elements is represented by this symbol.
 from tensorflow.keras import Sequential # Sequential groups a linear stack of layers into a tf.keras.Model
 from tensorflow.keras.layers import Dense, Dropout
-from chatbotContent import data
+# from chatbotContent import data
 nltk.download("punkt")# required package for tokenization
 nltk.download("wordnet")# word database
 from spellchecker import SpellChecker
 from nltk.tag import pos_tag
+
+with open('chatbotContent.py', 'r', encoding="utf-8") as file:
+    data = json.load(file)
 
 spell = SpellChecker()
 def lemmatize_word(token):
@@ -38,7 +41,6 @@ for intent in data["intents"]:
 
     if intent["tag"] not in ourClasses:# add unexisting tags to their respective classes
         ourClasses.append(intent["tag"])
-
 dataframe_pattern_words = [lemmatize_word(word.lower()) for word in dataframe_pattern_words if word not in string.punctuation] # set words to lowercase if not in punctuation
 dataframe_pattern_words = sorted(set(dataframe_pattern_words))# sorting words
 ourClasses = sorted(set(ourClasses))# sorting classes
@@ -102,7 +104,7 @@ def wordBag(newMessage_no_punc, dataframe_pattern_words, length_input):
                 bagOwords[dataframe_pattern_words.index(correct_spelling(w))] = 1
             else:    
                 print(f'sorry i dont know about the word {w} in your sentence.')        
-    print(bagOwords,bagOwords.count(1), '******************bagOwords*******************')
+    print(bagOwords.count(1), '******************bagOwords*******************')
     if bagOwords.count(1) != length_input:
         pass
     return num.array(bagOwords)
@@ -131,25 +133,31 @@ def getRes(firstlist, fJson):
         if i["tag"] == tag:
             ourResult = random.choice(i["responses"])
             break
+    global previous_msg     
+    previous_msg = newMessage    
     return ourResult
 
 while True:
-    newMessage = input("You: ").lower()
+    newMessage = input("You(Type 'wrong' if i give wrong input): ").lower()
     if not newMessage:
-       print("Bot:", "please type something")
-       break
-    newMessage_tokenize = nltk.word_tokenize(newMessage)
-    newMessage_no_punc = [lemmatize_word(word.lower()) for word in newMessage_tokenize if word not in string.punctuation]
-    if newMessage_no_punc[0][:2] == "hi": newMessage_no_punc[0] = newMessage_no_punc[0][:2]
-    if newMessage_no_punc[0][:3] == "hai": newMessage_no_punc[0] = newMessage_no_punc[0][:3]
-    # print(newMessage_no_punc,"=======newMessage_no_punc==========")
-    
-    # for word in newMessage_no_punc:
-    #    if word not in dataframe_pattern_words:
-    #       print("Bot:", "I'm sorry! I didn't understand what you said. Could you please rephrase that?")
-    #       break
-    # newMessage_no_punc_string = " ".join(newMessage_no_punc)
-    # print(newMessage_no_punc_string,"====newMessage_no_punc_string")
-    intents = Pclass(newMessage_no_punc, dataframe_pattern_words, ourClasses, len(newMessage_no_punc))
-    ourResult = getRes(intents, data)
-    print(ourResult)
+        print("Bot:", "please type something")
+        break
+    if newMessage == "wrong":
+        print("Sorry for my wrong answer. Please tell which category this question belongs to")
+        categories = [i["tag"] for i in data['intents']]
+        categories = {i:j for i,j in enumerate(categories)} 
+        new_or_existing = input(f"Type '1'-(for creating new category) '2'-existing category: ")
+        if new_or_existing == "2":
+            category = input(f"Please tell category from the list {categories} so that I will update in my dataset: ")
+            (data["intents"][int(category)]["patterns"]).append(previous_msg)
+            with open('chatbotContent.py', 'w', encoding="utf-8") as file:
+                json.dump(data, file, ensure_ascii=False, indent=4)
+            break    
+    elif newMessage != "wrong":
+        newMessage_tokenize = nltk.word_tokenize(newMessage)
+        newMessage_no_punc = [lemmatize_word(word.lower()) for word in newMessage_tokenize if word not in string.punctuation]
+        if newMessage_no_punc[0][:2] == "hi": newMessage_no_punc[0] = newMessage_no_punc[0][:2]
+        if newMessage_no_punc[0][:3] == "hai": newMessage_no_punc[0] = newMessage_no_punc[0][:3]
+        intents = Pclass(newMessage_no_punc, dataframe_pattern_words, ourClasses, len(newMessage_no_punc))
+        ourResult = getRes(intents, data)
+        print(ourResult)

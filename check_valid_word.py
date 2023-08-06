@@ -13,6 +13,3 @@ for word in words_to_check:
         print(f"'{word}' is a valid word.")
     else:
         print(f"'{word}' is not a valid word.")
-
-
-       

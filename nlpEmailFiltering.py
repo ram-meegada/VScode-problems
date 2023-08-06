@@ -1,13 +1,14 @@
-import asyncio
+import asyncio, json
 import nltk
 from django.core.mail import send_mail
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tag import pos_tag
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger')
+# nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('averaged_perceptron_tagger')
+from chatbotContent import data
 
 class EmailFilter:
     def __init__(self):
@@ -55,4 +56,12 @@ def email_filtering_func(subject_of_mail, body_of_mail):
     body = body_of_mail
     final_category = email.main_process(subject, body)
     return final_category
-email_filtering_func("looking", 'restaurants')
+# email_filtering_func("looking", 'restaurants')
+
+# with open('chatbotContent.py', 'r', encoding="utf-8") as file:
+#     data = json.load(file)
+# print(data)
+def change(data):
+    with open('chatbotContent.py', 'w', encoding="utf-8") as file:
+        json.dump(data, file, ensure_ascii=False, indent=4)
+print(change(data))

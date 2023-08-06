@@ -72,8 +72,7 @@
                 "Find flights",
                 "flights",
                 "Looking for restaurants",
-                "restaurants",
-                "i want to book hotel"
+                "restaurants"
             ],
             "responses": [
                 "Sure! I can help you with that.",
