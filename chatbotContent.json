@@ -6,6 +6,18 @@
             "responses": []
         },
         {
+            "tag": "user naming questions",
+            "patterns": [
+                "What is my name?",
+                "Tell me my name.",
+                "Do you know what my name is?"
+            ],
+            "responses": [
+                "Iam sorry, I don't know your name. Could you please tell what your name is?"
+            ]
+        },
+
+        {
             "tag": "greeting",
             "patterns": [
                 "Hi",
@@ -71,7 +83,6 @@
                 "Search for hotels",
                 "Find flights",
                 "flights",
-                "Looking for restaurants",
                 "restaurants",
                 "i want to book hotel"
             ],
@@ -178,7 +189,8 @@
             "tag": "thanks",
             "patterns": [
                 "Thank you",
-                "Thanks a lot"
+                "Thanks a lot",
+                "sukriya"
             ],
             "responses": [
                 "You're welcome!",

@@ -8,7 +8,7 @@ from nltk.tag import pos_tag
 # nltk.download('punkt')
 # nltk.download('stopwords')
 # nltk.download('averaged_perceptron_tagger')
-from chatbotContent import data
+# from chatbotContent import data
 
 class EmailFilter:
     def __init__(self):
@@ -58,10 +58,23 @@ def email_filtering_func(subject_of_mail, body_of_mail):
     return final_category
 # email_filtering_func("looking", 'restaurants')
 
-# with open('chatbotContent.py', 'r', encoding="utf-8") as file:
-#     data = json.load(file)
-# print(data)
-def change(data):
-    with open('chatbotContent.py', 'w', encoding="utf-8") as file:
-        json.dump(data, file, ensure_ascii=False, indent=4)
-print(change(data))
+
+
+# Test with sentences
+sentences = [
+    "Hi, my name is John Smith.",
+    "Call me Alex.",
+    "My full name is Elizabeth Thompson.",
+    "You can refer to me as TechEnthusiast.",
+    "I'm the artist formerly known as Ava.",
+    "Hello, I'm Emily.",
+]
+def sentence_classification():
+    pos_tag_word = pos_tag([token])[0][1]
+    lemmatizer = WordNetLemmatizer()
+    if pos_tag_word.lower()[0] == 'v':
+        return lemmatizer.lemmatize(token, pos='v')
+    elif pos_tag_word.lower()[0] == 'n':
+        return lemmatizer.lemmatize(token, pos='n')  
+    else:
+        return lemmatizer.lemmatize(token, pos='a')

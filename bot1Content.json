@@ -1,0 +1,46 @@
+{
+    "intents": [
+        {
+            "tag": "user details",
+            "patterns": [],
+            "responses": []
+        },
+        {
+            "tag": "user naming questions",
+            "patterns": [
+                "What is my name?",
+                "Tell me my name.",
+                "Do you know what my name is?"
+            ],
+            "responses": [
+                "Iam sorry, I don't know your name. Could you please tell what your name is?"
+            ]
+        },
+
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hello",
+                "Hey",
+                "hai"
+            ],
+            "responses": [
+                "Hi there!",
+                "Hello! How can I assist you?",
+                "Hey,how can I help?"
+            ]
+        },
+        {
+            "tag": "greeting2",
+            "patterns": [
+                "How are you?",
+                "how u doing"
+            ],
+            "responses": [
+                "im fine, What about you.",
+                "im doing well, How its going on."
+            ]
+        }
+    ]
+}   
