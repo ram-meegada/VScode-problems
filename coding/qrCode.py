@@ -6,7 +6,7 @@ import pyqrcode
 import png
 from pyqrcode import QRCode
 
-qrcode_img=qrcode.make('2HTWKVM16QN2YD6JH1')
+qrcode_img=qrcode.make('2HTWKVY5X8V9795GJ4')
 canvas=Image.new("RGB", (300,300),"white")
 draw=ImageDraw.Draw(canvas)
 canvas.paste(qrcode_img)

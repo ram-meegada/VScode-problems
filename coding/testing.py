@@ -1,18 +1,6 @@
-import os
-from PIL import Image
-
-# source_dir = "/home/apptunix/Pictures/"
-# output_dir = "./"
-
-# for file in os.listdir(source_dir):
-#     if file.split('.')[-1] == "jpg":
-#         print(file, '-------------file---------------------')
-#         image = Image.open(os.path.join(source_dir, file))
-#         print(image, '------------image---------------')
-#         image_converted = image.convert('RGB')
-#         image_converted.save(os.path.join(output_dir, f"{file.split('.')[-2]}.pdf"))
-#         print("converted")
-
-all_attributes = os.getcwd()
-
-print(all_attributes)
+lst = [1,2,3,4,5,6]
+for i in range((len(lst))//2):
+    temp = lst[i]
+    lst[i] = lst[len(lst)-i-1]
+    lst[len(lst)-i-1] = temp
+print(lst)    
