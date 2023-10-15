@@ -3,11 +3,12 @@ def merge_sort(arr):
         left_arr = arr[:len(arr)//2]
         right_arr = arr[len(arr)//2:]
 
-        merge_sort(left_arr)
-        merge_sort(right_arr)
-        print(arr)
-
-
+        x = merge_sort(left_arr)
+        print(111111111)   
+        y = merge_sort(right_arr)
+        print(22222222222) 
+        c = 1+2
+        print(333333333)
 
 arr = [3,5,2,1,8,9]
 merge_sort(arr)
