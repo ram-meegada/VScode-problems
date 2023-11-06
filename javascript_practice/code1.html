@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <script>
+        function func1(){
+            document.getElementById("just").innerHTML = "this is script head";
+        }
+    </script>
+</head>
 <body>
 
 <h2>What Can JavaScript Do?</h2>
 
 <p id="demo">JavaScript can change HTML content.</p>
+<p id="just">iam learning javascript.</p>
+<p id="mul"></p>
 
 <button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
 <button onclick="window.print()">print this page</button>
+<button onclick="func1()">head script</button>
 <script>
-    alert("you visited this page")
-    console.log('iam practicing javascript...............')
+    let total = 2 + 8 + "5";
+    {
+        let total = 11
+    }
+    console.log(total, '------------------------')
+    document.getElementById("demo").innerHTML = "The total is: " + total;
 </script>
 
 </body>
