@@ -1,6 +1,8 @@
-from datetime import datetime, date
-from dateutil.relativedelta import relativedelta
+import json
 
-bought_subscription_date = date(2023,9,9)
-trial_duration_completing_date = bought_subscription_date + relativedelta(months=1)
-print(trial_duration_completing_date)
+n = {'question1': 
+ 			[{'question3': [{'question4': []}, {'question7': []}]}], 'question2': [{'question5': []}, {'question6': []}]}
+n = json.dumps(n)
+n = n.replace("'", '"')
+n = json.loads(n)
+print(json.dumps(n, indent=2))
