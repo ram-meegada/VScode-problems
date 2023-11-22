@@ -1,4 +1,4 @@
-{
+data = {
     "intents": [
         {
             "tag": "user details",
