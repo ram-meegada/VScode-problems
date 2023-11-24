@@ -1,6 +1,9 @@
 import openai
 
-openai.api_key = "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"
+from decouple import config
+
+openai.api_key = config("api_key_latest1")
+# openai.api_key = "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"
 
 def open_ai_chat(input_text):
     if input_text:
@@ -18,4 +21,4 @@ while True:
     if input_text == "stop":
         break
     result = open_ai_chat(input_text)
-    print(result)    
+    print(result) 

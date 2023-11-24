@@ -1,6 +1,7 @@
 import openai
+from decouple import config
 
-openai.api_key = "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"
+openai.api_key = config("api_key") 
 
 def chat(input_text):
     if input_text:

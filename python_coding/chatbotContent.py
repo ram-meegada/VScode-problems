@@ -16,7 +16,6 @@ data = {
                 "Iam sorry, I don't know your name. Could you please tell what your name is?"
             ]
         },
-
         {
             "tag": "greeting",
             "patterns": [
