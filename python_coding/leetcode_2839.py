@@ -20,28 +20,18 @@
 # Explanation: It is not possible to make the two strings equal. -->
 
 def solution(s1, s2):
-    for i in range(0, len(s1)):
-        if i == 2:
-            break
-        third = s1[i+2]
-        first = s1[i]
-        print(third, first)
-        print(third + s1[1] + first + s1[3], '------', s1[0] + third + s1[2] + first)
-        if (third + s1[1] + first + s1[3] == s2) or (s1[0] + third + s1[2] + first == s2):
-            return True
-        if s1 == s2:
-            return True
-        else:
-            third = s1[i+2]
-            first = s1[i]
-            if i == 0:
-                s1 = third + s1[1] + first + s1[3]
-            elif i == 1:
-                s1 = s1[0] + third + s1[2] + first
-            if s1 == s2: return True
+    a = s1[2]+s1[1]+s1[0]+s1[3]
+    if a == s2:
+        return True
+    b = s1[0]+s1[3]+s1[2]+s1[1]
+    if b == s2:
+        return True
+    c = a[0]+a[3]+a[2]+a[1]
+    if c == s2:
+        return True
     return False
 
-s1 = "bnxw"
-s2 = "bwxn"
+s1 = "abcd"
+s2 = "dacb"
 result = solution(s1, s2)
 print(result)
