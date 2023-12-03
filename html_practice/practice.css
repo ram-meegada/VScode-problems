@@ -1,0 +1,22 @@
+/* p{
+    color: darkgreen;
+    border: 10px solid pink;
+    padding: 15px 0px 0px 0px;
+    margin: 10px 0px;
+} */
+a:link, a:visited{
+    color: white;
+    background-color: red;
+    padding: 15px 5px 30px;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid green;
+}
+a:active{
+    color: pink;
+    text-decoration: none;
+}
+a:hover{
+    color: red;
+    text-decoration: none;
+}
