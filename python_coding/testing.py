@@ -14,13 +14,18 @@
 # Output: 23
 # Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
 
-available_time_slots = [
-    {"1": ("9:00", "9:30"), "availability":True},
-    {"2": ("9:30", "10:00"), "availability":True},
-    {"3": ("10:00", "10:30"), "availability":True},
-    {"4": ("10:30", "11:00"), "availability":True},
-    {"5": ("11:00", "11:30"), "availability":True},
-    {"6": ("11:30", "12:00"), "availability":True},
-    {"7": ("12:00", "12:30"), "availability":True},
-    {"8": ("12:30", "13:00"), "availability":True},
-]
+import logging
+
+a = 5
+b = 0
+try:
+    c = a/b
+    logging.info(f"the result is {c}")
+except Exception as error:
+    logging.exception(f"exception occurred. the error is {error}")    
+
+
+# try:
+#   c = a / b
+# except Exception as e:
+#   logging.error("Exception occurred", exc_info=True)
