@@ -1,19 +1,21 @@
-# Given an integer array nums, find the 
-# subarray
-#  with the largest sum, and return its sum.
+from collections import Counter
 # Example 1:
-# Input: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-# Output: 6
-# Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+# Input: secret = "1807", guess = "7810"
+# Output: "1A3B"
+# Explanation: Bulls are connected with a '|' and cows are underlined:
+# "1807"
+#   |
+# "7810"
 # Example 2:
-# Input: nums = [1]
-# Output: 1
-# Explanation: The subarray [1] has the largest sum 1.
-# Example 3:
-# Input: nums = [5,4,-1,7,8]
-# Output: 23
-# Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
+# Input: secret = "1123", guess = "0111"
+# Output: "1A1B"
+# Explanation: Bulls are connected with a '|' and cows are underlined:
+# "1123"        "1123"
+#   |      or     |
+# "0111"        "0111"
+# Note that only one of the two unmatched 1s is counted as a cow since the non-bull digits can only be rearranged to allow one 1 to be a bull.
 
+<<<<<<< Updated upstream
 # import logging
 
 # a = 5
@@ -43,3 +45,35 @@ duplicate_rows = content[content.duplicated()]
 # print("content", content, len(content), '--------------')
 print("df_no_duplicates", df_no_duplicates, len(df_no_duplicates), '--------------')
 print(duplicate_rows, "duplicate_rows-------", len(duplicate_rows))
+=======
+secret = "1123"
+guess = "0111"
+# bulls = 0
+# cows_count = 0
+# secret_cows = {}
+# guess_cows = {}
+# for i in range(len(secret)):
+#     if secret[i] == guess[i]:
+#         bulls += 1
+#     else:
+#         secret_cows[secret[i]] = secret_cows.get(secret[i], 0) + 1
+#         guess_cows[guess[i]] = guess_cows.get(guess[i], 0) + 1
+
+# for i,j in secret_cows.items():
+#     if guess_cows.get(i):
+#         if j >= guess_cows[i]:
+#             cows_count += guess_cows[i]
+#         else:
+#             cows_count += j 
+# print(f"{bulls}A{cows_count}B")              
+
+# sh = defaultdict(int)
+
+
+s, g = Counter(secret), Counter(guess)
+# a = sum(i == j for i, j in zip(secret, guess))
+# print('%sA%sB' % (a, sum((s & g).values()) - a)) 
+b = {1:9, 2:3}
+c = {4:5, 1:2}
+print(Counter(c) & Counter(b))
+>>>>>>> Stashed changes
